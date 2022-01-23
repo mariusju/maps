@@ -10,18 +10,21 @@ import View from "ol/View";
 import { styleFunction } from "./styles";
 import { init } from "./tracking";
 
-const center = transform([21.0871, 55.4319], "EPSG:4326", "EPSG:3857");
+const params = new URL(document.location).searchParams;
+const route = params.get("route");
+
+const { centerCoordinates } = await fetch(`/${route}.json`).then((response) =>
+  response.json()
+);
+
+const center = transform(centerCoordinates, "EPSG:4326", "EPSG:3857");
+
 const view = new View({
   center,
   zoom: 12,
 });
 
 const { accuracyFeature, positionFeature } = init(view);
-
-console.log(window.location.search);
-
-const params = new URL(document.location).searchParams;
-const route = params.get("route");
 
 const map = new Map({
   target: "map-container",
