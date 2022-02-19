@@ -9,28 +9,28 @@ export const defaultStyle = function (feature) {
   var Point = new Style({
     image: new CircleStyle({
       fill: new Fill({
-        color: "rgba(255,0,41,0.5)",
+        color: "rgba(0,94,184,1)",
       }),
       radius: 5,
-      stroke: new Stroke({
-        color: "#ec00ca",
-        width: 1,
-      }),
+      // stroke: new Stroke({
+      //   color: "#ec00ca",
+      //   width: 0,
+      // }),
     }),
-    text: new Text({
-      font: "14px Calibri",
-      text: feature.get("name"),
-      placement: "line",
-      offsetY: -12,
-      // offsetX: 2,
-      fill: new Fill({
-        color: "purple",
-      }),
-      stroke: new Stroke({
-        color: "#fff",
-        width: 1,
-      }),
-    }),
+    // text: new Text({
+    //   font: "14px Calibri",
+    //   text: feature.get("name"),
+    //   placement: "line",
+    //   offsetY: -12,
+    //   // offsetX: 2,
+    //   fill: new Fill({
+    //     color: "purple",
+    //   }),
+    //   stroke: new Stroke({
+    //     color: "#fff",
+    //     width: 1,
+    //   }),
+    // }),
   });
   var LineString = new Style({
     stroke: new Stroke({
@@ -147,7 +147,7 @@ export const defaultStyle = function (feature) {
   } else if (gType === "MultiPolygon") {
     return MultiPolygon;
   }
-}
+};
 
 export const styleFunction = function (feature, resolution) {
   var featureStyleFunction = feature.getStyleFunction();

@@ -1,6 +1,9 @@
 import "ol/ol.css";
+import "./style.css";
 import GeoJSON from "ol/format/GeoJSON";
 import Map from "ol/Map";
+import Overlay from "ol/Overlay";
+import * as olControl from "ol/control";
 import { transform } from "ol/proj";
 import OSM from "ol/source/OSM";
 import TileLayer from "ol/layer/Tile";
@@ -9,6 +12,7 @@ import VectorSource from "ol/source/Vector";
 import View from "ol/View";
 import { styleFunction } from "./styles";
 import { init } from "./tracking";
+import { usePopup } from "./popup";
 
 const params = new URL(document.location).searchParams;
 const route = params.get("route");
@@ -49,3 +53,5 @@ new VectorLayer({
     features: [accuracyFeature, positionFeature],
   }),
 });
+
+usePopup(map);
